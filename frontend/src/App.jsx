@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Main from './pages/Main';
 import SignIn from "./pages/SignIn";
+import PostForm from "./components/PostForm";
 import RequireAuth from "./components/RequireAuth";
 import Layout from "./components/Layout";
 import { AuthProvider } from './context/AuthProvider';
@@ -20,13 +21,14 @@ const App = () => {
 
               <Route element={<RequireAuth />}>
                 <Route path="/" element={<Main />} />
-              
+                <Route path="createPost" element={<PostForm />} />
               </Route>
 
             </Route>
 
             <Route path="/" element={<PublicLayout />}>
               <Route path="login" element={<SignIn />} />
+             
              {/*  <Route path="register" element={<Register />} /> */}
 
             </Route>

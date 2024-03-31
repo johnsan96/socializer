@@ -6,6 +6,7 @@ import useAuth from '../hooks/useAuth';
 
 const Login = () => {
     const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Login = () => {
         setLoading(true);
         try {
             // Sende POST-Anfrage an den Server
-            const response = await axios.post('http://localhost:4000/login', { name }, { withCredentials: true });
+            const response = await axios.post('http://localhost:4000/login', { name, password }, { withCredentials: true });
 
             // Extrahiere die Tokens aus der Server-Antwort
             const { accessToken, refreshToken } = response.data;
@@ -56,6 +57,19 @@ const Login = () => {
                         autoFocus
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                    />
+                      <TextField
+                        margin="normal"
+                        type="password"
+                        required
+                        fullWidth
+                        id="password"
+                        label="password"
+                        name="password"
+                        autoComplete="password"
+                        autoFocus
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     <Button
                         type="submit"

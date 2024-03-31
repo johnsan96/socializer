@@ -1,12 +1,16 @@
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt');
 
 function generateAccessToken(user) {
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' })
 }
 exports.login = (req, res) => {
 
-    const username = req.body.username
-    const user = { name: username }
+    const username = req.body.name
+    const password = req.body.password
+    const user = { name: username, password: password }
+    
+
 
     const accessToken = generateAccessToken(user)
     /*  const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)

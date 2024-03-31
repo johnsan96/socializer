@@ -48,15 +48,15 @@ function MainNavigation() {
                         </li>
                         
                         <li className="nav-item me-2">
-                            <Button component={NavLink} to="/profile" activeClassName="active" className="nav-link">
-                                Profile
+                            <Button component={NavLink} to="/createPost" activeClassName="active" className="nav-link">
+                                Create Post
                             </Button>
                         </li>
-                        <li className="nav-item me-2">
+                      {/*   <li className="nav-item me-2">
                             <Button component={NavLink} to="/people" activeClassName="active" className="nav-link">
                                 People
                             </Button>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <div className="nav nav-pills mt-4 d-flex flex-row align-self-center">

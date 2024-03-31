@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(usersRouter);
 app.use(loginRouter);
 app.use(postRouter);
 app.use(imageRouter);

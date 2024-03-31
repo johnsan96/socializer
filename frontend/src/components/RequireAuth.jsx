@@ -9,15 +9,22 @@ const RequireAuth = () => {
     const location = useLocation();
 
     useEffect(() => {
-        
+
         const jwtToken = Cookies.get("token");
 
-        console.log(jwtToken)
-     
-        setToken(jwtToken);
+        console.log("requireAuth: " + jwtToken)
+
+        if (jwtToken) {
+            setToken(jwtToken);
+        } else {
+            console.log("setze token zu null...")
+            Cookies.remove('token')
+            setToken(null);
+        }
+
 
         setIsLoading(false);
-    }, [setToken]);
+    }, [token, location.pathname]);
 
     if (isLoading) {
         return (

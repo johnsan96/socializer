@@ -1,9 +1,23 @@
 var express = require('express');
-var router = express.Router();
+var userRouter = express.Router();
+var userController = require('../controllers/userController')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+userRouter.route('/users')
+.post(userController.post)
 
-module.exports = router;
+module.exports = userRouter;
+
+
+/* const express = require("express")
+
+const postController = require("../controllers/postController")
+const postRouter = express.Router()
+
+const isAuth = require("../middleware/isAuth")
+
+postRouter.route("/posts")
+    .post(isAuth, postController.post)
+    .get(isAuth, postController.getAllPosts)
+
+
+module.exports = postRouter */

@@ -12,12 +12,14 @@ module.exports = (req, res, next) => {
         }
         req.user = user;
 
-        console.log("req.user: " + req.user.username)
+        console.log("req.user: " + req.user.name)
 
 
         next();
     } catch (err) {
         res.clearCookie("token");
+        console.log("jwt not value anymore...")
+        res.status(401).json({ error: 'JWT nicht mehr gültig' });
 
     }
 }
