@@ -14,10 +14,10 @@ POST http://localhost:4000/users
 Content-Type: application/json
 
 {
-   "name":"jack",
-    "description":"frontend dev",
-    "password":"123",
-    "email":"ujack@email.com"
+   "name":"lksdjflkdsjf",
+    "description":"sdsdsf",
+    "password":"1s23",
+    "email":"sdfsfsf@email.com"
 }
 
 

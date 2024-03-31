@@ -1,19 +1,25 @@
 const model = require("../models/user")
+const bcrypt = require('bcrypt');
 
 exports.post = async (req, res) => {
     try {
         const { name, description, password, email } = req.body;
-   
 
-        // Erstelle einen neuen Post-Eintrag
-        const newPost = await model.create({
-            username:name,
-            description,
-            password,
-            email
-        });
+        const saltRounds = 10;
+        bcrypt.hash(password, saltRounds, async (err, hash) => {
+            // Erstelle einen neuen Post-Eintrag
+            const newPost = await model.create({
+                username: name,
+                description,
+                password: hash,
+                email: email
+            });
 
-        res.status(201).json({ message: 'Post erstellt', post: newPost });
+            res.status(201).json({ message: 'User erstellt', user: newPost });
+
+        })
+
+
     } catch (error) {
         console.error('Fehler beim Erstellen des Posts:', error);
         res.status(500).json({ error: 'Interner Serverfehler' });
