@@ -6,7 +6,8 @@ POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-  "username": "Jim"
+  "name": "admin",
+  "password": "12345"
 }
 
 ###
@@ -14,10 +15,10 @@ POST http://localhost:4000/users
 Content-Type: application/json
 
 {
-   "name":"lksdjflkdsjf",
-    "description":"sdsdsf",
-    "password":"1s23",
-    "email":"sdfsfsf@email.com"
+   "name":"admin",
+    "description":"hallo ich bin der admin",
+    "password":"12345",
+    "email":"admin@email.com"
 }
 
 
