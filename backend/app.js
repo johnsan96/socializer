@@ -13,6 +13,8 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login.js');
 var postRouter = require('./routes/post.js');
 var imageRouter = require('./routes/image.js');
+var friendshipRouter = require('./routes/friendship.js');
+
 
 var app = express();
 app.use(cors({
@@ -43,6 +45,7 @@ app.use(usersRouter);
 app.use(loginRouter);
 app.use(postRouter);
 app.use(imageRouter);
+app.use(friendshipRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
