@@ -7,6 +7,7 @@ import RequireAuth from "./components/RequireAuth";
 import Layout from "./components/Layout";
 import { AuthProvider } from './context/AuthProvider';
 import PublicLayout from "./components/PublicLayout";
+import Friends from "./pages/Friends";
 
 
 const App = () => {
@@ -22,14 +23,15 @@ const App = () => {
               <Route element={<RequireAuth />}>
                 <Route path="/" element={<Main />} />
                 <Route path="createPost" element={<PostForm />} />
+                <Route path="friends" element={<Friends />} />
               </Route>
 
             </Route>
 
             <Route path="/" element={<PublicLayout />}>
               <Route path="login" element={<SignIn />} />
-             
-             {/*  <Route path="register" element={<Register />} /> */}
+
+              {/*  <Route path="register" element={<Register />} /> */}
 
             </Route>
 

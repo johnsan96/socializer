@@ -52,11 +52,11 @@ function MainNavigation() {
                                 Create Post
                             </Button>
                         </li>
-                      {/*   <li className="nav-item me-2">
-                            <Button component={NavLink} to="/people" activeClassName="active" className="nav-link">
-                                People
+                        <li className="nav-item me-2">
+                            <Button component={NavLink} to="/friends" activeClassName="active" className="nav-link">
+                                Friends
                             </Button>
-                        </li> */}
+                        </li>
                     </ul>
                 </div>
                 <div className="nav nav-pills mt-4 d-flex flex-row align-self-center">

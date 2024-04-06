@@ -6,8 +6,12 @@ import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 function Main() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState();
 
   useEffect(() => {
+
+    let userTemp = localStorage.getItem("user");
+    setUser(JSON.parse(userTemp))
     // Axios-Anfrage an den Server
     axios.get('http://localhost:4000/posts', { withCredentials: true })
       .then(response => {
@@ -20,11 +24,11 @@ function Main() {
         console.error('Fehler beim Abrufen der Posts:', error);
         // Behandle den Fehler hier entsprechend
       });
-  }, []); // Leeres Array als Abhängigkeit, um sicherzustellen, dass der Effekt nur einmal ausgeführt wird
+  }, []);
 
   return (
     <div className="main" style={{ width: '100%' }}>
-      <h2 className='underline'> Welcome</h2>
+      <h2 className='underline'> Welcome {user?.username + " "+ user?.id}</h2>
       {/* Zeige die Posts an */}
       {posts.map((post, index) => (
         <Card>

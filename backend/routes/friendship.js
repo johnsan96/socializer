@@ -7,7 +7,7 @@ const isAuth = require("../middleware/isAuth")
 
 friendRouter.route("/friendships")
     .post(isAuth, friendController.post)
-    .get(isAuth, friendController.getFriendsFromUser)
+    .get(/* isAuth,  */friendController.getFriendsFromUser)
 
 
 module.exports = friendRouter

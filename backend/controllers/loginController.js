@@ -44,7 +44,15 @@ exports.login = (req, res) => {
 
                     const accessToken = generateAccessToken({ id: foundUser.id, username: foundUser.username });
                     res.cookie("token", accessToken, { httpOnly: false });
-                    res.json({ accessToken: accessToken });
+                    res.json({
+                        accessToken: accessToken,
+                        user: {
+                            id: foundUser.id,
+                            username: foundUser.username,
+                            description: foundUser.description,
+                            email: foundUser.email
+                        }
+                    });
                 });
         })
         .catch(error => {

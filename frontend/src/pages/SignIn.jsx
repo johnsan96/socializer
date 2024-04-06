@@ -23,13 +23,16 @@ const Login = () => {
             const response = await axios.post('http://localhost:4000/login', { name, password }, { withCredentials: true });
 
             // Extrahiere die Tokens aus der Server-Antwort
-            const { accessToken, refreshToken } = response.data;
+            const { accessToken, refreshToken, user } = response.data;
             // Speichere die Tokens im lokalen Speicher oder Cookie
-        /*     localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('refreshToken', refreshToken); */
+            /*     localStorage.setItem('accessToken', accessToken);
+                localStorage.setItem('refreshToken', refreshToken); */
+            localStorage.setItem("user", JSON.stringify(user))
             // Navigiere zur vorherigen Seite
             setToken(accessToken)
+
             navigate(from, { replace: true });
+
         } catch (err) {
             console.error('Fehler beim Login:', err);
             setError('Fehler beim Login');
@@ -58,7 +61,7 @@ const Login = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
-                      <TextField
+                    <TextField
                         margin="normal"
                         type="password"
                         required

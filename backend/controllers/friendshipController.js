@@ -20,8 +20,10 @@ exports.post = async (req, res) => {
 
 exports.getFriendsFromUser = async (req, res) => {
     try {
-        const { user_id } = req.body;
-        const friends = await model.findAll({ where: { user_id: user_id } });
+       /*  const { user_id } = req.query 
+
+        console.log("user.id: "+user_id) */
+        const friends = await model.findAll({ where: { user_id: req.query.user_id } });
 
         res.status(200).json(friends);
     } catch (error) {
