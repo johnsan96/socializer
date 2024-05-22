@@ -28,21 +28,36 @@ function Main() {
 
   return (
     <div className="main" style={{ width: '100%' }}>
-      <h2 className='underline'> Welcome {user?.username + " "+ user?.id}</h2>
+      <h2 className='underline'> Welcome {user?.username + " " + user?.id}</h2>
       {/* Zeige die Posts an */}
       {posts.map((post, index) => (
-        <Card>
-          <CardContent>
-            <Typography variant="h5">{post.title}</Typography>
-            <Typography>{post.description}</Typography>
+        <>
+          {post.image_url != 'test_image_url' ?
 
-            <img src={"http://localhost:4000/uploads/" + post.image_url} alt="Logo" width="200px" height="200px" />
-            {/* Hier könntest du auch das Bild anzeigen */}
-          </CardContent>
+            < Card >
+              <CardContent>
+                <Typography variant="h5">{post.title}</Typography>
+                <Typography>{post.description}</Typography>
 
-        </Card>
-      ))}
-    </div>
+                {post.image_url != 'test_image_url' ?
+                  <img src={"http://localhost:4000/uploads/" + post.image_url} alt="Logo" width="200px" height="200px" />
+                  :
+                  <></>
+                }
+
+              </CardContent>
+
+            </Card>
+            :
+
+            <></>
+          }
+        </>
+
+
+      ))
+      }
+    </div >
   );
 }
 

@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../app');
 require("dotenv").config();
 
-let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTE5MTA3ODMsImV4cCI6MTcxMTkxNDM4M30.JbAd4hOW_K-TeOggvxL7D9zlDNmKZ0_4ueVAMUMVUso";
+let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MTU4NTM5ODcsImV4cCI6MTcxNTg1NzU4N30.rPhcUUVsqK7NK4ShRYM8O4Xl6uz-oXFf_eW7HkX4adE";
 
 describe('POST /posts', () => {
     it('should create a new post', async () => {

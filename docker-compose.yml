@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/usr/src/app
+      - ./backend/socializer.db:/usr/src/app/socializer.db  # Pfad zur SQLite-Datei auf Host und im Container
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - ./backend/.env    
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./frontend/.env    
+    environment:
+      - NODE_ENV=development

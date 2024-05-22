@@ -7,3 +7,13 @@ CREATE TABLE post (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
+
+Hello,
+thank you for the response. Is it possible you don't record this as failed in the IUP?
+
+
+
+Best regards
+
+
+John Paul Doctolero

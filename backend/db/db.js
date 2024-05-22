@@ -2,8 +2,8 @@ const sqlite3 = require('sqlite3').verbose(); // Importieren Sie sqlite3 auf her
 const { Sequelize } = require('sequelize'); // Importieren Sie Sequelize auf herkömmliche Weise
 
 // Pfad zur SQLite-Datenbankdatei
-const dbPath = "/home/john/Dokumente/projects/socializer/backend/socializer.db";
-
+/* const dbPath = "/home/john/Dokumente/projects/socializer/backend/socializer.db"; */
+const dbPath = "/usr/src/app/socializer.db"
 // Erstellen Sie eine neue Instanz von Sequelize
 const sequelize = new Sequelize({
     dialect: 'sqlite',
