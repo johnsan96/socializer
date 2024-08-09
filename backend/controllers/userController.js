@@ -26,7 +26,7 @@ exports.post = async (req, res) => {
     }
 };
 
-exports.getUser = async (req, res) => {
+exports.getAllUser = async (req, res) => {
     try {
         // Abfrage aller Beiträge aus der Datenbank
         const posts = await model.findAll();
@@ -36,6 +36,28 @@ exports.getUser = async (req, res) => {
     } catch (error) {
         // Fehlerbehandlung bei einem Fehler während der Abfrage
         console.error('Fehler beim Abrufen der Beiträge:', error);
+        res.status(500).json({ error: 'Interner Serverfehler' });
+    }
+};
+
+
+
+exports.getUser = async (req, res) => {
+    try {
+        const userId = req.params.id; // Benutzer-ID aus den URL-Parametern extrahieren
+
+        // Suche nach dem Benutzer in der Datenbank
+        const user = await model.findByPk(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'Benutzer nicht gefunden' });
+        }
+
+        // Erfolgreiche Antwort mit den Benutzerinformationen
+        res.status(200).json(user);
+    } catch (error) {
+        // Fehlerbehandlung bei einem Fehler während der Abfrage
+        console.error('Fehler beim Abrufen des Benutzers:', error);
         res.status(500).json({ error: 'Interner Serverfehler' });
     }
 };

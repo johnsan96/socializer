@@ -16,7 +16,7 @@ const PostForm = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/posts', { withCredentials: true });
+                const response = await axios.get(import.meta.env.VITE_EXPRESS_API+'/posts', { withCredentials: true });
                 setPosts(response.data);
                 setPostLoading(false);
             } catch (error) {
@@ -42,7 +42,7 @@ const PostForm = () => {
             /*  imageData.append('name', '3434') */
 
             // Hochladen des Bildes 
-            const imageResponse = await axios.post('http://localhost:4000/image', imageData, {
+            const imageResponse = await axios.post(import.meta.env.VITE_EXPRESS_API+ '/image', imageData, {
                 /*  withCredentials: true, */
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -61,7 +61,7 @@ const PostForm = () => {
                 image_url: imageUrl
             };
 
-            await axios.post('http://localhost:4000/posts', postData, {
+            await axios.post(import.meta.env.VITE_EXPRESS_API+ '/posts', postData, {
                 withCredentials: true
             });
 
@@ -91,7 +91,7 @@ const PostForm = () => {
                                 <Typography variant="h5">{post.title}</Typography>
                                 <Typography>{post.description}</Typography>
                         
-                                <img src={"http://localhost:4000/uploads/" + post.image_url} alt="Logo" width="200px" height="200px" />
+                                <img src={import.meta.env.VITE_EXPRESS_API+ "/uploads/" + post.image_url} alt="Logo" width="200px" height="200px" />
                                 {/* Hier könntest du auch das Bild anzeigen */}
                             </CardContent>
                         </Card>

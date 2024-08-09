@@ -17,10 +17,23 @@ var friendshipRouter = require('./routes/friendship.js');
 
 
 var app = express();
-app.use(cors({
-  origin: 'http://localhost:5173',
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://192.168.2.201:5173'
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
 
 /* app.use('/uploads',express.static('images')) */
 

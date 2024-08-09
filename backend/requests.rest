@@ -29,19 +29,28 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwia
 
 ###
 POST http://localhost:4000/friendships
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MTIzMzcwNzAsImV4cCI6MTcxMjM0MDY3MH0.45s-x5WTX6kfWD0Q5PL9LEFZCS9DwX0zTwnHtSzb2lM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MTY5MDg2NzIsImV4cCI6MTcxNjkxMjI3Mn0.80t-Fu2Ky1zUHXICNIHcXdQOpte9CmLHbm___h-ATD4
 Content-Type: application/json
 
 {
-  "user_id": 2,
-  "friend_id": 5
+  "user_id": 10,
+  "friend_id": 6
 }
 
 ###
 GET http://localhost:4000/friendships
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MTIzMzcwNzAsImV4cCI6MTcxMjM0MDY3MH0.45s-x5WTX6kfWD0Q5PL9LEFZCS9DwX0zTwnHtSzb2lM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE3MTY5MDg2NzIsImV4cCI6MTcxNjkxMjI3Mn0.80t-Fu2Ky1zUHXICNIHcXdQOpte9CmLHbm___h-ATD4
 Content-Type: application/json
 
 {
   "user_id": 2
 }
+
+###
+GET http://localhost:4000/user/5
+Content-Type: application/json
+
+
+
+
+###

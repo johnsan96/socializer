@@ -6,32 +6,53 @@ import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 function Friends() {
   const navigate = useNavigate();
   const [friends, setFriends] = useState([]);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    let userTemp = localStorage.getItem("user");
-    let userObject = JSON.parse(userTemp)
-    setUser(userObject);
-    // Axios-Anfrage an den Server
-    axios.get('http://localhost:4000/friendships?user_id=' + userObject?.id)
-      .then(response => {
-        // Erfolgreiche Antwort vom Server erhalten
-        console.log('Friends erhalten:', response.data);
-        setFriends(response.data); // Setze die Posts im Zustand
-      })
-      .catch(error => {
-        // Fehler beim Abrufen der Posts
-        console.error('Fehler beim Abrufen der Posts:', error);
-        // Behandle den Fehler hier entsprechend
-      });
-  }, []); // Leeres Array als Abhängigkeit, um sicherzustellen, dass der Effekt nur einmal ausgeführt wird
+    const fetchFriends = async () => {
+      try {
+        const userTemp = localStorage.getItem("user");
+        const userObject = JSON.parse(userTemp);
+        setUser(userObject);
 
+        if (userObject && userObject.id) {
+          const response = await axios.get(import.meta.env.VITE_EXPRESS_API+ '/friendships?user_id=' + userObject.id);
+          const friendships = response.data;
+
+          const friendsDataPromises = friendships.map(async (friendship) => {
+
+            const userResponse = await axios.get(import.meta.env.VITE_EXPRESS_API+ '/user/' + friendship.friend_id);
+            return userResponse.data;
+          });
+
+          const friendsData = await Promise.all(friendsDataPromises);
+          setFriends(friendsData);
+        }
+      } catch (error) {
+        console.error('Fehler beim Abrufen der Freunde:', error);
+        // Behandle den Fehler hier entsprechend
+      }
+    };
+
+    fetchFriends();
+  }, []); // Leeres Array als Abhängigkeit, um sicherzustellen, dass der Effekt nur einmal ausgeführt wird
 
   return (
     <div className="main" style={{ width: '100%' }}>
-      <h2 className='underline'> Friends</h2>
-      {/* Zeige die Posts an */}
-
+      <h2 className='underline'>Friends</h2>
+      {friends.map(friend => (
+        <Card key={friend.id} style={{ marginBottom: '1rem' }}>
+          <CardHeader title={friend.username} />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {friend.description}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {friend.email}
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 }

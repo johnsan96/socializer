@@ -13,7 +13,7 @@ function Main() {
     let userTemp = localStorage.getItem("user");
     setUser(JSON.parse(userTemp))
     // Axios-Anfrage an den Server
-    axios.get('http://localhost:4000/posts', { withCredentials: true })
+    axios.get(import.meta.env.VITE_EXPRESS_API +'/posts', { withCredentials: true })
       .then(response => {
         // Erfolgreiche Antwort vom Server erhalten
         console.log('Posts erhalten:', response.data);
@@ -40,7 +40,7 @@ function Main() {
                 <Typography>{post.description}</Typography>
 
                 {post.image_url != 'test_image_url' ?
-                  <img src={"http://localhost:4000/uploads/" + post.image_url} alt="Logo" width="200px" height="200px" />
+                  <img src={import.meta.env.VITE_EXPRESS_API+ "/uploads/" + post.image_url} alt="Logo" width="200px" height="200px" />
                   :
                   <></>
                 }

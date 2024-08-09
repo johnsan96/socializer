@@ -1,0 +1,25 @@
+
+friendships
+[
+    {
+        "user_id": 10,
+        "friend_id": 4
+    },
+    {
+        "user_id": 10,
+        "friend_id": 5
+    },
+    {
+        "user_id": 10,
+        "friend_id": 6
+    }
+]
+
+
+user{
+  "id": 5,
+  "username": "john samacky",
+  "password": "$2b$10$V9M6pKQqCDVc4UaZc4hpQ.dYcqHtAepJdYGaOGR0YxLjaAlqskLpG",
+  "email": "usamacky@email.com",
+  "description": "manager"
+}

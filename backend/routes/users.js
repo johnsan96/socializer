@@ -3,12 +3,14 @@ var userRouter = express.Router();
 var userController = require('../controllers/userController')
 
 userRouter.route('/users')
-.post(userController.post)
+    .post(userController.post)
+
+// Route zum Abrufen eines einzelnen Benutzers
+userRouter.route('/user/:id').get(userController.getUser);
 
 module.exports = userRouter;
 
-
-/* const express = require("express")
+/* const express = require("express")   
 
 const postController = require("../controllers/postController")
 const postRouter = express.Router()
